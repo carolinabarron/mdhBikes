@@ -35,13 +35,11 @@ public class ResultsPage extends BasePage {
     WebElement precioPrimerArticulo;
 
     String criterioBusqueda;
-    Producto producto;
 
-    public ResultsPage(WebDriver wd, String criterioBusqueda, Producto producto) {
+    public ResultsPage(WebDriver wd, String criterioBusqueda) {
         super(wd);
         PageFactory.initElements(wd, this);
         this.criterioBusqueda = criterioBusqueda;
-        this.producto = producto;
     }
 
     public void verificarPagina(){
@@ -61,7 +59,7 @@ public class ResultsPage extends BasePage {
         System.out.println("Búsqueda verificada");
     }
 
-    public void guardarInfoProducto(){
+    public Producto guardarInfoProducto(){
 
         String nombre = nombrePrimerArticulo.getText();
         String descripcion = descripcionPrimerArticulo.getText();
@@ -69,14 +67,10 @@ public class ResultsPage extends BasePage {
         precioText = precioText.replace(",","");
         precioText = precioText.replace("PRECIO - $","");
         double precio = Double.parseDouble(precioText);
-
-
-        producto.setNombre(nombre);
-        producto.setDescripcion(descripcion);
-        producto.setPrecio(precio);
-        //return new producto(nombre, descripcion, precio);
-        System.out.println("Nombre: " + producto.getNombre() + " /// Descripcion: " + producto.getDescripcion()
-                + " /// Precio: " + producto.getPrecio());
+        Producto prod = new Producto(nombre, descripcion, precio);
+        System.out.println("Nombre: " + prod.getNombre() + " /// Descripcion: " + prod.getDescripcion()
+                + " /// Precio: " + prod.getPrecio());
+        return prod;
     }
 
     public void clickProducto(){

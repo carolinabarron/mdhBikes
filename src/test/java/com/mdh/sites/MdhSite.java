@@ -14,7 +14,7 @@ public class MdhSite {
     private ResultsPage results;
     private ProductPage product;
     private String criterioBusqueda = "M1 Helmet";
-    private Producto producto = new Producto();
+    private Producto producto;
     private int contadorCarrito = 0;
 
     public HomePage getHome() {
@@ -22,11 +22,11 @@ public class MdhSite {
     }
 
     public ResultsPage getResults() {
-        return new ResultsPage(driver, criterioBusqueda, producto);
+        return new ResultsPage(driver, criterioBusqueda);
     }
 
     public ProductPage getProductInfo() {
-        return new ProductPage(driver, producto, contadorCarrito);
+        return new ProductPage(driver, contadorCarrito);
     }
 
     public CartPage getCartProdInfo() {
@@ -36,4 +36,16 @@ public class MdhSite {
     public MdhSite(WebDriver driver) {
         this.driver = driver;
     }
+
+    public void saveProduct(Producto producto){
+        this.producto = producto;
+    }
+
+    public Producto retrieveProducto(){
+        return this.producto;
+    }
+
+
+
+
 }

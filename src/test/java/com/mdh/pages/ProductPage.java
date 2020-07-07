@@ -32,15 +32,12 @@ public class ProductPage extends BasePage{
     @FindBy(css = "div.desktopMaster > div.header.noMovible a i.fa.fa-shopping-cart")
     WebElement iconoCarrito;
 
-
-    Producto producto;
     int contadorCarrito;
 
 
-     public ProductPage(WebDriver wd, Producto producto, int contadorCarrito) {
+     public ProductPage(WebDriver wd, int contadorCarrito) {
         super(wd);
         PageFactory.initElements(wd, this);
-        this.producto = producto;
         this.contadorCarrito = contadorCarrito;
     }
 
@@ -48,7 +45,7 @@ public class ProductPage extends BasePage{
          assertTrue(wait.until(ExpectedConditions.visibilityOf(logoMdh)).isDisplayed());
     }
 
-    public void validarDetallesProducto(){
+    public void validarDetallesProducto(Producto producto){
         String nombre = nombreArticulo.getText();
         String descripcion = descripcionArticulo.getText();
         String precioText = precioArticulo.getText();
