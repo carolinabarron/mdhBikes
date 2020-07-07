@@ -22,9 +22,6 @@ public class ResultsPage extends BasePage {
     @FindBy(css="[class*=resultado]")
     List<WebElement> listaProductos;
 
-    @FindBy(css="div.desktopMaster a[href='producto/1209'] > div")
-    WebElement linkPrimerArticulo;
-
     @FindBy(css="div.desktopMaster a[href='producto/1209'] > div > div.izquierda > h3")
     WebElement nombrePrimerArticulo;
 
@@ -48,7 +45,6 @@ public class ResultsPage extends BasePage {
     }
 
     public void verificarResultados(String criterioBusqueda){
-        assertTrue(linkPrimerArticulo.isDisplayed());
         assertTrue(nombrePrimerArticulo.isDisplayed());
         assertTrue(descripcionPrimerArticulo.isDisplayed());
         assertTrue(nombrePrimerArticulo.getText().toLowerCase().contains(criterioBusqueda.toLowerCase())
@@ -57,7 +53,6 @@ public class ResultsPage extends BasePage {
     }
 
     public Producto guardarInfoProducto(){
-
         String nombre = nombrePrimerArticulo.getText();
         String descripcion = descripcionPrimerArticulo.getText();
         String precioText = precioPrimerArticulo.getText();
@@ -71,6 +66,6 @@ public class ResultsPage extends BasePage {
     }
 
     public void clickProducto(){
-        linkPrimerArticulo.click();
+        listaProductos.get(0).click();
     }
 }
