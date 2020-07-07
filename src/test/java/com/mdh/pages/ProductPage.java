@@ -24,13 +24,25 @@ public class ProductPage extends BasePage{
     @FindBy(css="div.commonContainer > div.colContainer div.precio")
     WebElement precioArticulo;
 
+    @FindBy(id = "carrito")
+    WebElement botonAgregarCarrito;
+
+    @FindBy(css = "div.header.noMovible a span.contadorCarrito")
+    WebElement iconoContadorCarrito;
+
+    @FindBy(css = "div.desktopMaster > div.header.noMovible a i.fa.fa-shopping-cart")
+    WebElement iconoCarrito;
+
+
     Producto producto;
+    int contadorCarrito;
 
 
-     public ProductPage(WebDriver wd, Producto producto) {
+     public ProductPage(WebDriver wd, Producto producto, int contadorCarrito) {
         super(wd);
         PageFactory.initElements(wd, this);
         this.producto = producto;
+        this.contadorCarrito = contadorCarrito;
     }
 
     public void validarPagina(){
@@ -56,6 +68,20 @@ public class ProductPage extends BasePage{
 
         }
 
+    }
+
+    public void clickAgregarArticuloCarrito(){
+         assertTrue(botonAgregarCarrito.isEnabled());
+         contadorCarrito = Integer.parseInt(iconoContadorCarrito.getText());
+         System.out.println("Contador carrito = " + contadorCarrito);
+         botonAgregarCarrito.click();
+
+    }
+
+    public void clickIconoCarrito(){
+        assertTrue(iconoCarrito.isEnabled());
+        iconoCarrito.click();
+        System.out.println("Se dio click al icono del carrito");
     }
 
 }

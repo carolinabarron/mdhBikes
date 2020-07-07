@@ -1,5 +1,6 @@
 package com.mdh.sites;
 
+import com.mdh.pages.CartPage;
 import com.mdh.pages.HomePage;
 import com.mdh.pages.ProductPage;
 import com.mdh.pages.ResultsPage;
@@ -14,6 +15,7 @@ public class MdhSite {
     private ProductPage product;
     private String criterioBusqueda = "M1 Helmet";
     private Producto producto = new Producto();
+    private int contadorCarrito;
 
     public HomePage getHome() {
 
@@ -26,8 +28,13 @@ public class MdhSite {
     }
 
     public ProductPage getProductInfo() {
-        return new ProductPage(driver, producto);
+        return new ProductPage(driver, producto, contadorCarrito);
     }
+
+    public CartPage getCartProdInfo() {
+        return new CartPage(driver, producto, contadorCarrito);
+    }
+
 
     public MdhSite(WebDriver driver) {
         this.driver = driver;
