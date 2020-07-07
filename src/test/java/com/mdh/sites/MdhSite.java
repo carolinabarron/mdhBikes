@@ -15,15 +15,13 @@ public class MdhSite {
     private ProductPage product;
     private String criterioBusqueda = "M1 Helmet";
     private Producto producto = new Producto();
-    private int contadorCarrito;
+    private int contadorCarrito = 0;
 
     public HomePage getHome() {
-
         return new HomePage(driver, criterioBusqueda);
     }
 
     public ResultsPage getResults() {
-
         return new ResultsPage(driver, criterioBusqueda, producto);
     }
 
@@ -34,7 +32,6 @@ public class MdhSite {
     public CartPage getCartProdInfo() {
         return new CartPage(driver, producto, contadorCarrito);
     }
-
 
     public MdhSite(WebDriver driver) {
         this.driver = driver;

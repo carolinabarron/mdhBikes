@@ -26,7 +26,6 @@ public class CartPage extends BasePage {
     Producto producto;
     int contadorCarrito;
 
-
     public CartPage(WebDriver wd, Producto producto, int contadorCarrito) {
         super(wd);
         PageFactory.initElements(wd, this);
@@ -40,9 +39,26 @@ public class CartPage extends BasePage {
 
     public void verificarContadorCarrito(){
         int contadorCarritoActualizado = Integer.parseInt(iconoContadorCarrito.getText());
-        assertTrue(contadorCarritoActualizado == contadorCarrito +1);
+        System.out.println("Contador carrito actualizado = " + contadorCarritoActualizado);
+        assertTrue(contadorCarritoActualizado == contadorCarrito + 1);
         System.out.println("El contador del carrito se incrementó correctamente");
+    }
 
+    public void verificarInformacionProducto() {
+        String nombre = nombreArticuloAgregado.getText();
+        String precioText = precioArtAgregado.getText();
+        precioText = precioText.replace(",","");
+        precioText = precioText.replace("$","");
+        double precio = Double.parseDouble(precioText);
+
+        if(nombre.contains(producto.getNombre()) && precio == producto.getPrecio()) {
+            System.out.println("La información del producto en el carrito coincide con el producto seleccionado");
+        }
+        else {
+            System.out.println("La información del producto en el carrito no coinciden con el criterio de búsqueda");
+            System.exit(-1);
+
+        }
     }
 
 }

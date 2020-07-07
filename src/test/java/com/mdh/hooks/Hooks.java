@@ -23,7 +23,7 @@ public class Hooks {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\libs\\chromedriver.exe");
+      //  System.setProperty("webdriver.chrome.driver", "C:\\libs\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Properties.LONG_WAIT, TimeUnit.SECONDS);
         mdhSite = new MdhSite(driver);

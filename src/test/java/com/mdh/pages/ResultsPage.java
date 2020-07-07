@@ -7,11 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-
-
 import static org.junit.Assert.assertTrue;
 
 public class ResultsPage extends BasePage {
+
     @FindBy(css="div.header.noMovible div.logo > a > img")
     WebElement logoMdh;
 
@@ -70,11 +69,9 @@ public class ResultsPage extends BasePage {
         producto.setDescripcion(descripcion);
         producto.setPrecio(precio);
         //return new producto(nombre, descripcion, precio);
-        System.out.println("Nombre: " + producto.getNombre() + "descripcion " + producto.getDescripcion()
-                + "precio " + producto.getPrecio());
+        System.out.println("Nombre: " + producto.getNombre() + " /// Descripcion: " + producto.getDescripcion()
+                + " /// Precio: " + producto.getPrecio());
     }
-
-
 
     public void clickProducto(){
         linkPrimerArticulo.click();

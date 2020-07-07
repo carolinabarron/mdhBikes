@@ -11,7 +11,6 @@ import static org.junit.Assert.assertTrue;
 
 public class ProductPage extends BasePage{
 
-
     @FindBy(css="div.header.noMovible div.logo > a > img")
     WebElement logoMdh;
 
@@ -46,7 +45,7 @@ public class ProductPage extends BasePage{
     }
 
     public void validarPagina(){
-        assertTrue(wait.until(ExpectedConditions.visibilityOf(logoMdh)).isDisplayed());
+         assertTrue(wait.until(ExpectedConditions.visibilityOf(logoMdh)).isDisplayed());
     }
 
     public void validarDetallesProducto(){
@@ -58,14 +57,12 @@ public class ProductPage extends BasePage{
         double precio = Double.parseDouble(precioText);
 
         if(nombre.equals(producto.getNombre()) && descripcion.equals(producto.getDescripcion())
-                && precio == producto.getPrecio())
-        {
+                && precio == producto.getPrecio()) {
             System.out.println("El criterio de búsqueda coincide con el producto seleccionado");
         }
-         else{
+         else {
             System.out.println("Los detalles de la página del producto no coinciden con el criterio de búsqueda");
              System.exit(-1);
-
         }
 
     }
@@ -75,13 +72,12 @@ public class ProductPage extends BasePage{
          contadorCarrito = Integer.parseInt(iconoContadorCarrito.getText());
          System.out.println("Contador carrito = " + contadorCarrito);
          botonAgregarCarrito.click();
-
     }
 
     public void clickIconoCarrito(){
-        assertTrue(iconoCarrito.isEnabled());
-        iconoCarrito.click();
-        System.out.println("Se dio click al icono del carrito");
+         wait.until(ExpectedConditions.elementToBeClickable(iconoCarrito));
+         iconoCarrito.click();
+         System.out.println("Se dio click al icono del carrito");
     }
 
 }

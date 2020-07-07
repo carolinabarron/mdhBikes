@@ -12,6 +12,7 @@ public class MdhPageStepDefs {
         this.mdhSite = h.getMdhSite();
     }
 
+    //Scenario 1: Search
     @Given("El usuario introduce criterio de busqueda")
     public void elUsuarioIntroduceCriterioDeBusqueda() {
         mdhSite.getHome().navegarSitio();
@@ -21,11 +22,11 @@ public class MdhPageStepDefs {
 
     @When("Pagina de resultados es mostrada")
     public void paginaDeResultadosEsMostrada() {
-            mdhSite.getResults().verificarPagina();
-            mdhSite.getResults().verificarResultados();
-            mdhSite.getResults().guardarInfoProducto();
-            mdhSite.getResults().clickProducto();
-        }
+        mdhSite.getResults().verificarPagina();
+        mdhSite.getResults().verificarResultados();
+        mdhSite.getResults().guardarInfoProducto();
+        mdhSite.getResults().clickProducto();
+    }
 
     @Then("El usario accede a los detalles del producto buscado")
     public void elUsarioAccedeALosDetallesDelProductoBuscado() {
@@ -36,6 +37,7 @@ public class MdhPageStepDefs {
     //Scenario 2 - Add to Cart
     @Given("El usuario selecciona un articulo")
     public void elUsuarioSeleccionaUnArticulo() {
+        //Se ejecutan los steps del search
         elUsuarioIntroduceCriterioDeBusqueda();
         paginaDeResultadosEsMostrada();
         elUsarioAccedeALosDetallesDelProductoBuscado();
@@ -52,5 +54,6 @@ public class MdhPageStepDefs {
     public void elArticuloEsListadoEnLaPaginaDeCarrito() {
         mdhSite.getCartProdInfo().validarPagina();
         mdhSite.getCartProdInfo().verificarContadorCarrito();
+        mdhSite.getCartProdInfo().verificarInformacionProducto();
     }
 }

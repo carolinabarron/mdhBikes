@@ -1,4 +1,5 @@
 package com.mdh.pages;
+
 import com.mdh.utils.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.Assert.assertTrue;
 
 public class HomePage extends BasePage {
+
     @FindBy(css="div.header.noMovible div.logo > a > img")
     WebElement logoMdh;
     @FindBy(css="div.header.noMovible [name='q']")
