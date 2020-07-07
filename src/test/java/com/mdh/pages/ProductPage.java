@@ -68,6 +68,7 @@ public class ProductPage extends BasePage{
          assertTrue(botonAgregarCarrito.isEnabled());
          contadorCarrito = Integer.parseInt(iconoContadorCarrito.getText());
          System.out.println("Contador carrito = " + contadorCarrito);
+        wait.until(ExpectedConditions.elementToBeClickable(botonAgregarCarrito));
          botonAgregarCarrito.click();
     }
 

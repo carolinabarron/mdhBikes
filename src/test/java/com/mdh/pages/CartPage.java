@@ -1,5 +1,6 @@
 package com.mdh.pages;
 
+import com.mdh.sites.MdhSite;
 import com.mdh.utils.Producto;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,13 +24,11 @@ public class CartPage extends BasePage {
     @FindBy(css = "div.header.noMovible a span.contadorCarrito")
     WebElement iconoContadorCarrito;
 
-    Producto producto;
     int contadorCarrito;
 
-    public CartPage(WebDriver wd, Producto producto, int contadorCarrito) {
+    public CartPage(WebDriver wd, int contadorCarrito) {
         super(wd);
         PageFactory.initElements(wd, this);
-        this.producto = producto;
         this.contadorCarrito = contadorCarrito;
     }
 
@@ -44,7 +43,7 @@ public class CartPage extends BasePage {
         System.out.println("El contador del carrito se incrementó correctamente");
     }
 
-    public void verificarInformacionProducto() {
+    public void verificarInformacionProducto(Producto producto) {
         String nombre = nombreArticuloAgregado.getText();
         String precioText = precioArtAgregado.getText();
         precioText = precioText.replace(",","");

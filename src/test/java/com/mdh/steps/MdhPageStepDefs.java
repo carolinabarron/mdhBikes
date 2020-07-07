@@ -57,6 +57,6 @@ public class MdhPageStepDefs {
     public void elArticuloEsListadoEnLaPaginaDeCarrito() {
         mdhSite.getCartProdInfo().validarPagina();
         mdhSite.getCartProdInfo().verificarContadorCarrito();
-        mdhSite.getCartProdInfo().verificarInformacionProducto();
+        mdhSite.getCartProdInfo().verificarInformacionProducto(mdhSite.retrieveProducto());
     }
 }

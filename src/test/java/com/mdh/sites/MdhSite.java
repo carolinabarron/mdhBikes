@@ -30,7 +30,7 @@ public class MdhSite {
     }
 
     public CartPage getCartProdInfo() {
-        return new CartPage(driver, producto, contadorCarrito);
+        return new CartPage(driver, contadorCarrito);
     }
 
     public MdhSite(WebDriver driver) {
