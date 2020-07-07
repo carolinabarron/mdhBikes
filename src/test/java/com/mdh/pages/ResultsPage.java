@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 public class ResultsPage extends BasePage {
@@ -17,7 +19,10 @@ public class ResultsPage extends BasePage {
     @FindBy(css="div.desktopMaster div.bannerInicio > span")
     WebElement categoriaBusqueda;
 
-    @FindBy(css="div.desktopMaster > div > div.busquedaContainer.menuVisible > a:nth-child(1) > div")
+    @FindBy(css="[class*=resultado]")
+    List<WebElement> listaProductos;
+
+    @FindBy(css="div.desktopMaster a[href='producto/1209'] > div")
     WebElement linkPrimerArticulo;
 
     @FindBy(css="div.desktopMaster a[href='producto/1209'] > div > div.izquierda > h3")
@@ -42,6 +47,7 @@ public class ResultsPage extends BasePage {
     public void verificarPagina(){
         assertTrue(wait.until(ExpectedConditions.visibilityOf(logoMdh)).isDisplayed());
         assertTrue(categoriaBusqueda.isDisplayed());
+        assertTrue(listaProductos.size() > 0);
         System.out.println("Página de resultados verificada");
 
     }
