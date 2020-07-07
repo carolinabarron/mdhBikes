@@ -32,13 +32,9 @@ public class ProductPage extends BasePage{
     @FindBy(css = "div.desktopMaster > div.header.noMovible a i.fa.fa-shopping-cart")
     WebElement iconoCarrito;
 
-    int contadorCarrito;
-
-
-     public ProductPage(WebDriver wd, int contadorCarrito) {
+     public ProductPage(WebDriver wd) {
         super(wd);
         PageFactory.initElements(wd, this);
-        this.contadorCarrito = contadorCarrito;
     }
 
     public void validarPagina(){
@@ -64,12 +60,13 @@ public class ProductPage extends BasePage{
 
     }
 
-    public void clickAgregarArticuloCarrito(){
+    public int clickAgregarArticuloCarrito(){
          assertTrue(botonAgregarCarrito.isEnabled());
-         contadorCarrito = Integer.parseInt(iconoContadorCarrito.getText());
+         int contadorCarrito = Integer.parseInt(iconoContadorCarrito.getText());
          System.out.println("Contador carrito = " + contadorCarrito);
-        wait.until(ExpectedConditions.elementToBeClickable(botonAgregarCarrito));
+         wait.until(ExpectedConditions.elementToBeClickable(botonAgregarCarrito));
          botonAgregarCarrito.click();
+         return contadorCarrito;
     }
 
     public void clickIconoCarrito(){

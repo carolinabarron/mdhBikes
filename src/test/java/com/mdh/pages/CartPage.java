@@ -24,19 +24,16 @@ public class CartPage extends BasePage {
     @FindBy(css = "div.header.noMovible a span.contadorCarrito")
     WebElement iconoContadorCarrito;
 
-    int contadorCarrito;
-
-    public CartPage(WebDriver wd, int contadorCarrito) {
+    public CartPage(WebDriver wd) {
         super(wd);
         PageFactory.initElements(wd, this);
-        this.contadorCarrito = contadorCarrito;
     }
 
     public void validarPagina(){
         assertTrue(wait.until(ExpectedConditions.visibilityOf(logoMdh)).isDisplayed());
     }
 
-    public void verificarContadorCarrito(){
+    public void verificarContadorCarrito(int contadorCarrito){
         int contadorCarritoActualizado = Integer.parseInt(iconoContadorCarrito.getText());
         System.out.println("Contador carrito actualizado = " + contadorCarritoActualizado);
         assertTrue(contadorCarritoActualizado == contadorCarrito + 1);
@@ -44,6 +41,7 @@ public class CartPage extends BasePage {
     }
 
     public void verificarInformacionProducto(Producto producto) {
+        wait.until(ExpectedConditions.visibilityOf(nombreArticuloAgregado));
         String nombre = nombreArticuloAgregado.getText();
         String precioText = precioArtAgregado.getText();
         precioText = precioText.replace(",","");

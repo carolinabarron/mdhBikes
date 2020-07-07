@@ -6,4 +6,6 @@ public class Properties {
     public static final long LONG_WAIT = 30;
 
     public static final String URL = "https://mdhbikes.com/";
+
+    public static final String CRITERIO_BUSQUEDA = "M1 Helmet";
 }

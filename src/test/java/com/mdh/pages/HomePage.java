@@ -18,9 +18,8 @@ public class HomePage extends BasePage {
     WebElement botonBusqueda;
     String criterioBusqueda;
 
-    public HomePage(WebDriver wd, String criterioBusqueda) {
+    public HomePage(WebDriver wd) {
         super(wd);
-        this.criterioBusqueda = criterioBusqueda;
         PageFactory.initElements(wd, this);
     }
 
@@ -36,7 +35,7 @@ public class HomePage extends BasePage {
         System.out.println("Home page verificado");
     }
 
-    public void buscarProducto(){
+    public void buscarProducto(String criterioBusqueda){
         campoBusqueda.sendKeys(criterioBusqueda);
         botonBusqueda.click();
         System.out.println("Búsqueda ingresada");

@@ -34,12 +34,9 @@ public class ResultsPage extends BasePage {
     @FindBy(css="div.desktopMaster a[href='producto/1209'] > div > div.izquierda > p.precio")
     WebElement precioPrimerArticulo;
 
-    String criterioBusqueda;
-
-    public ResultsPage(WebDriver wd, String criterioBusqueda) {
+    public ResultsPage(WebDriver wd) {
         super(wd);
         PageFactory.initElements(wd, this);
-        this.criterioBusqueda = criterioBusqueda;
     }
 
     public void verificarPagina(){
@@ -50,7 +47,7 @@ public class ResultsPage extends BasePage {
 
     }
 
-    public void verificarResultados(){
+    public void verificarResultados(String criterioBusqueda){
         assertTrue(linkPrimerArticulo.isDisplayed());
         assertTrue(nombrePrimerArticulo.isDisplayed());
         assertTrue(descripcionPrimerArticulo.isDisplayed());
