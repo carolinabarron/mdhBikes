@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
     public WebDriver driver;
     public MdhSite mdhSite;
-
+    //no tiene mucho sentido pq lo maneja el buen MdhSite;
     public WebDriver getDriver() {
         return driver;
     }

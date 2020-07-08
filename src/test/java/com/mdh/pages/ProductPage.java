@@ -70,8 +70,7 @@ public class ProductPage extends BasePage{
     }
 
     public void clickIconoCarrito(){
-         wait.until(ExpectedConditions.elementToBeClickable(iconoCarrito));
-         iconoCarrito.click();
+         this.clickElement(iconoCarrito);
          System.out.println("Se dio click al icono del carrito");
     }
 
