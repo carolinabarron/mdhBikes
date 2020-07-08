@@ -4,6 +4,7 @@ import com.mdh.hooks.Hooks;
 import com.mdh.sites.MdhSite;
 import com.mdh.utils.Producto;
 import com.mdh.utils.Properties;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,11 +16,10 @@ public class MdhPageStepDefs {
     }
 
     //Scenario 1: Search
-    @Given("El usuario introduce criterio de busqueda")
-    public void elUsuarioIntroduceCriterioDeBusqueda() {
+    @Given("El usuario introduce {string}")
+    public void elUsuarioIntroduceCriterioDeBusqueda(String criterioBusqueda) {
         mdhSite.getHome().navegarSitio();
         mdhSite.getHome().verificarPagina();
-        String criterioBusqueda = Properties.CRITERIO_BUSQUEDA;
         mdhSite.saveCriterioBusqueda(criterioBusqueda);
         mdhSite.getHome().buscarProducto(mdhSite.retrieveCriterioBusqueda());
     }
@@ -41,10 +41,10 @@ public class MdhPageStepDefs {
     }
 
     //Scenario 2 - Add to Cart
-    @Given("El usuario selecciona un articulo")
-    public void elUsuarioSeleccionaUnArticulo() {
+    @Given("El usuario selecciona un {string}")
+    public void elUsuarioSeleccionaUnArticulo(String articulo) {
         //Se ejecutan los steps del search
-        elUsuarioIntroduceCriterioDeBusqueda();
+        elUsuarioIntroduceCriterioDeBusqueda(articulo);
         paginaDeResultadosEsMostrada();
         elUsarioAccedeALosDetallesDelProductoBuscado();
 
